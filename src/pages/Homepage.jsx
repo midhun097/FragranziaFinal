@@ -15,17 +15,23 @@ import Footer from '../components/Footer'
 function Homepage() {
   return (
     <>
-    <Navbar/>
-    <div className="bg-blue-900 text-white text-center py-2 text-sm font-semibold tracking-wide">
+      <Navbar />
+      <div
+        className="text-white text-center py-2 text-sm font-semibold tracking-wide"
+        style={{ backgroundColor: '#00354B' }}
+      >
         ENJOY FESTIVE DISCOUNTS! FREE SHIPPING ABOVE ₹999 !
       </div>
-    <PerfumeCarousel/>
-    <OffersSection/>
-    <FeatureSection/>
-    <FeaturedCarousel/>
-    <div className="py-10 px-4 text-center max-w-3xl mx-auto">
+
+      <PerfumeCarousel />
+      <OffersSection />
+      <FeatureSection />
+      <FeaturedCarousel />
+      <div className="py-10 px-4 text-center max-w-3xl mx-auto">
         <p className="text-lg md:text-xl font-medium text-gray-800">
-          "It's an art. A craft. A science. At Fragranza, we're in the business of creating memories that last forever through our fragrances."
+          "It's an art. A craft. A science. At Fragranza, we're in  <br />
+          the business of creating memories that last forever  <br />
+          through our fragrances."
         </p>
       </div>
       <div className='p-4 flex gap-5'>
@@ -60,9 +66,9 @@ function Homepage() {
           </div>
         </div>
       </div>
-      <ExploreCategories/>
-      <OffersCarousel/>
-            <div className='p-20'>
+      <ExploreCategories />
+      <OffersCarousel />
+      <div className='p-20'>
         <div className="bg-gradient-to-r from-[#d6f0fd] to-[#e0f5fc] rounded-xl p-6 flex flex-col md:flex-row items-center justify-between overflow-hidden">
           <div className="mb-4 md:mb-0 md:w-1/2">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Elegance in Every Bottle</h2>
@@ -83,7 +89,7 @@ function Homepage() {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
 
     </>
   )
