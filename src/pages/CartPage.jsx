@@ -26,7 +26,7 @@ const CartPage = () => {
     0
   );
   const totalOriginal = cartItems.reduce(
-    (sum, item) => sum + item.originalPrice * item.quantity,
+    (sum, item) => sum + (item.originalPrice || parseFloat(item.oldPrice?.replace(/[^\d.]/g, "")) || 0) * item.quantity,
     0
   );
   const totalDiscount = totalOriginal - totalPrice;
@@ -54,11 +54,11 @@ const CartPage = () => {
                 >
                   <img
                     src={item.image}
-                    alt={item.title}
+                    alt={item.name}
                     className="w-28 h-28 object-contain"
                   />
                   <div className="flex-1">
-                    <h3 className="font-semibold mb-2">{item.title}</h3>
+                    <h3 className="font-semibold mb-2">{item.name}</h3>
 
                     {/* Quantity Controls */}
                     <div className="flex items-center gap-4 mb-2">
@@ -81,12 +81,16 @@ const CartPage = () => {
                       Rs {item.price} × {item.quantity} = Rs{" "}
                       {item.price * item.quantity}
                     </p>
-                    <p className="line-through text-gray-500 text-sm">
-                      Original: Rs {item.originalPrice}
-                    </p>
-                    <p className="text-green-600 font-medium text-sm">
-                      {item.discount} off
-                    </p>
+                    {item.oldPrice && (
+                      <p className="line-through text-gray-500 text-sm">
+                        Original: {item.oldPrice}
+                      </p>
+                    )}
+                    {item.discount && (
+                      <p className="text-green-600 font-medium text-sm">
+                        {item.discount} off
+                      </p>
+                    )}
 
                     <div className="flex gap-3 mt-3">
                       <button
@@ -124,11 +128,11 @@ const CartPage = () => {
                 Price ({cartItems.length} item
                 {cartItems.length !== 1 ? "s" : ""})
               </span>
-              <span>Rs {totalOriginal}</span>
+              <span>Rs {totalOriginal.toFixed(2)}</span>
             </div>
             <div className="flex justify-between">
               <span>Discount</span>
-              <span className="text-green-600">Rs {totalDiscount}</span>
+              <span className="text-green-600">Rs {totalDiscount.toFixed(2)}</span>
             </div>
             <div className="flex justify-between">
               <span>Delivery Charge</span>
@@ -137,7 +141,7 @@ const CartPage = () => {
             <hr />
             <div className="flex justify-between font-semibold">
               <span>Total Amount</span>
-              <span>Rs {totalPrice}</span>
+              <span>Rs {totalPrice.toFixed(2)}</span>
             </div>
           </div>
           <button className="bg-blue-900 text-white w-full py-2 mt-4 rounded hover:bg-blue-800">
