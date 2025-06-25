@@ -6,7 +6,11 @@ const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    dispatch(addToCart(product));
+    dispatch(addToCart({
+      ...product,
+      name: product.title, // ✅ Add name for Cart compatibility
+      quantity: 1,
+    }));
   };
 
   return (

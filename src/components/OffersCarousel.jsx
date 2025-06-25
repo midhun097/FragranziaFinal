@@ -1,93 +1,102 @@
-import React from 'react';
-import Slider from 'react-slick';
-import image from '../images/002.jpg';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../redux/cartSlice'; // adjust path
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 
-const offers = [
+import "swiper/css";
+import "swiper/css/navigation";
+
+import ProductCard from "./ProductCard";
+
+import image1 from '../images/001.png';
+import image2 from '../images/002.jpg';
+import image3 from '../images/003.jpg';
+import image4 from '../images/004.jpg';
+
+const products = [
   {
-    id: 1,
-    name: 'Royal Eau De Parfum 100ml For Men',
-    price: 'R$ 650',
-    oldPrice: 'R$ 1400',
-    image: image,
+    id:21,
+    title: "Auto alfi 500ml For Men",
+    price: 950,
+    originalPrice: 1900,
+    isNew: true,
+    image: image1,
   },
-  {
-    id: 2,
-    name: 'Kyros Eau De Parfum 100ml For Men',
-    price: 'R$ 899',
-    oldPrice: 'R$ 2000',
-    image: image,
+  { id:22,
+    title: "kira alfi milo 200ml For Men",
+    price: 399,
+    originalPrice: 2000,
+    isNew: true,
+    image: image2,
   },
-  {
-    id: 3,
-    name: 'Royal Oud Humanity 100ml',
-    price: 'R$ 650',
-    oldPrice: 'R$ 1400',
-    image: image,
+  { id:23,
+    title: "Oud Of qatar Eau De barf 100ml",
+    price: 599,
+    originalPrice: 2241,
+    isNew: true,
+    image: image3,
   },
-  {
-    id: 4,
-    name: 'Autograph Eau De Parfum 100ml',
-    price: 'R$ 999',
-    oldPrice: 'R$ 2241',
-    image: image,
+  { id:24,
+    title: "Roi o banner der Darfum 300ml",
+    price: 1250,
+    originalPrice: 2000,
+    isNew: true,
+    image: image4,
+  },
+  { id:25,
+    title: "royal  britain 600ml",
+    price: 680,
+    originalPrice: 1900,
+    isNew: true,
+    image: image4,
+  },
+  { id:26,
+    title: "al dubai roger Fdedre 100ml",
+    price: 950,
+    originalPrice: 1300,
+    isNew: true,
+    image: image4,
+  },
+  { id:27,
+    title: "Ril alkeru De Parfum 100ml",
+    price: 670,
+    originalPrice: 1400,
+    isNew: true,
+    image: image4,
+  },
+  { id:28,
+    title: "Royal el blue 100ml",
+    price: 250,
+    originalPrice: 1800,
+    isNew: true,
+    image: image4,
   },
 ];
 
 const OffersCarousel = () => {
-  const dispatch = useDispatch();
-
-  const handleAddToCart = (item) => {
-    dispatch(addToCart(item));
-  };
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: true,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1.2,
-        },
-      },
-    ],
-  };
-
   return (
-    <div className="py-10 px-4">
-      <h2 className="text-xl font-semibold mb-4">Offers Zone</h2>
-      <Slider {...settings}>
-        {offers.map((item) => (
-          <div key={item.id} className="p-3">
-            <div className="bg-white rounded-xl shadow-md p-4 text-center">
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-full h-48 object-contain mx-auto mb-3"
-              />
-              <h3 className="text-sm font-medium">{item.name}</h3>
-              <p className="text-lg font-semibold">
-                {item.price}
-                <span className="line-through text-gray-400 text-sm ml-2">
-                  {item.oldPrice}
-                </span>
-              </p>
-              <button
-                onClick={() => handleAddToCart(item)}
-                className="mt-2 bg-blue-900 text-white px-4 py-2 w-full rounded"
-              >
-                Add to Cart
-              </button>
-            </div>
-          </div>
+    <div className="max-w-7xl mx-auto px-4 py-10">
+      <h2 className="text-2xl font-semibold mb-6">
+        Offer Zone
+      </h2>
+
+      <Swiper
+        className="w-full"
+        modules={[Navigation]}
+        spaceBetween={20}
+        slidesPerView={1}
+        navigation
+        breakpoints={{
+          640: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+          1280: { slidesPerView: 4 },
+        }}
+      >
+        {products.map((product, index) => (
+          <SwiperSlide key={index}>
+            <ProductCard product={product} />
+          </SwiperSlide>
         ))}
-      </Slider>
+      </Swiper>
     </div>
   );
 };

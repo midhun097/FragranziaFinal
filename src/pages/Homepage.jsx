@@ -10,6 +10,7 @@ import sellers from '../images/011.jpg'
 import ExploreCategories from '../components/ExploreCategories'
 import OffersCarousel from '../components/OffersCarousel'
 import Footer from '../components/Footer'
+import lastpart from '../images/2555a6e7d48237f6b1b24f19c4f8e70441955c33.jpg'
 
 
 function Homepage() {
@@ -67,7 +68,7 @@ function Homepage() {
         </div>
       </div>
       <ExploreCategories />
-      <OffersCarousel />
+      <OffersCarousel/>
       <div className='p-20'>
         <div className="bg-gradient-to-r from-[#d6f0fd] to-[#e0f5fc] rounded-xl p-6 flex flex-col md:flex-row items-center justify-between overflow-hidden">
           <div className="mb-4 md:mb-0 md:w-1/2">
@@ -80,13 +81,14 @@ function Homepage() {
             </button>
           </div>
 
-          <div className="md:w-1/2">
-            <img
-              src="/images/promo-banner-bottle.png"
-              alt="Perfume Bottle in Box"
-              className="w-full max-w-md mx-auto"
-            />
-          </div>
+<div className="md:w-1/2">
+  <img
+    src={lastpart}
+    alt="Perfume Bottle in Box"
+    className="w-48 mx-auto" // Reduced from w-full/max-w-md to w-48
+  />
+</div>
+
         </div>
       </div>
       <Footer />
